@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+  </head>
+  <body id="bg" style="background-image: url('{% static "images/nasa.jpg" %}')";>
+    <nav class='navbar navbar-inverse techfont custom-navbar'>
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li> <a class="navbar-brand bigbrand" href="{% url 'post_list' %}">MyBlog</a></li>
+          <li> <a href="{% url 'about' %}">About</a></li>
+          <li> <a href="https:///www.github.com">Github</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'post_new' %}">New Post</a>
+            </li>
+            <li>
+              <a href="{% url 'post_draft_list' %}">Drafts</a>
+            </li>
+            <li>
+              <a href="{% url 'logout' %}">LogOut</a>
+            </li>
+            <li>
+              <a>Welcome: {{ user.username }}</a>
+            </li>
+              {% else %}
+              <li> <a class='nav navbar-right' href="{% url 'login' %}"><span class="glyphicon glyphicon-user">Login</span></a></li>
+          {% endif %}
+        </ul>
+
+      </div>
+    </nav>
+
+    <!-- <div id="bg">
+      <img src="{% static 'images/nasa.jpg' %}" alt="img not found">
+    </div>
+
+    <style>
+      #bg{
+        margin: 0;
+        padding: 0;
+      }
+    </style> -->
+
+    <div class="content container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="blog_posts">
+          </div>
+        </div>
+      </div>
+
+
+</div>
+
+<div class="container" style="color:white; ">
+
+      {% block content %}
+
+      {% endblock %}
+
+    </div>
+
+
+    <footer class="footer">
+      <p>Copyright &copy 2021 - All Rights Reserved.</p>
+    </footer>
+<style>
+  .footer{
+    position: fixed;
+    bottom: 0px;
+    background-color: #262322;
+    color: white;
+    height: 35px;
+    padding-top: 8px;
+    padding-bottom: 4px;
+    letter-spacing: 0.2rem;
+    text-align: center;
+    width: 100%;
+  }
+</style>
+
+  </body>
+</html>

@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+  <form method="post">
+    {% csrf_token %}
+    <!-- <div class="alert alert-warning" role="alert"> -->
+      <div class="page-header">
+
+    <p>Are you sure you want to delete "{{ object }}" ?</p>
+    </div>
+    <br>
+    <input type="submit" class="btn btn-danger" value="Confirm">
+
+  </form>
+<!-- </div> -->
+  <style>
+    .page-header{
+      font-size: 1.7em;
+    }
+  </style>
+{% endblock%}
